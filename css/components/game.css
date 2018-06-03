@@ -1,0 +1,65 @@
+.game {
+  width: 100%;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .game-item {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .game-field {
+    width: 420px;
+    height: 420px;
+    border: 5px solid black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-shadow: 7px 10px 29px -9px rgba(0, 0, 0, 0.68);
+    box-shadow: 7px 10px 29px -9px rgba(0, 0, 0, 0.68); }
+  .game-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .game-cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transition-duration: 0.5s;
+            transition-duration: 0.5s; }
+    .game-cell:hover {
+      -webkit-box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.62);
+              box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.62); }
+    .game-cell img {
+      width: 30px;
+      height: 30px;
+      position: absolute; }
+    .game-cell i {
+      font-size: 20px; }
+
+.choosed {
+  background-color: rgba(0, 0, 0, 0.4) !important; }
+
+/*# sourceMappingURL=game.css.map */

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Battleship game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link href="./css/main.css" rel="stylesheet">
+
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+
+</head>
+
+<body>
+<noscript>Your browser does not support JavaScript! Please visit this <a href="https://www.enable-javascript.com/">page, where You can find info how to enable JS in all popular browsers</a></noscript>
+
+<main class="content-wrapper">
+
+    <nav class="nav">
+        <img class="nav-logo" src="assets/logo.png">
+        <ul>
+            <li>
+                <a href="#" class="active links js-gameLink">Game</a>
+            </li>
+            <li>
+                <a class="js-statistic links" href="#">Statistic</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="names">
+        <p>Please write players usernames, if your mate don't have account, go back and register it.</p>
+        <p class="error js-name-error"></p>
+        <input class="input js-player-1" placeholder="Player 1">
+        <input class="input js-player-2" placeholder="Player 2">
+        <p class="btn js-start-game">Start the game</p>
+    </div>
+
+
+    <div class="select hide">
+
+        <p class="select-info">Player <span class="js-player">First</span> should choose position of his warships</p>
+
+        <div class="select-available">
+            <div class="flex">
+                <div class="select-x4 select-row">
+                    <p><span class="js-one-cell-count">4</span>&nbsp;&nbsp;&nbsp;<span>-</span>&nbsp;&nbsp;&nbsp;</p>
+                    <img src="assets/ship.png" width="80">
+                    <p class="select-row-small js-one-cell current">1 cell ship</p>
+                </div>
+                <div class="select-x3 select-row">
+                    <p><span class="js-two-cell-count">3</span>&nbsp;&nbsp;&nbsp;<span>-</span>&nbsp;&nbsp;&nbsp;</p>
+                    <img src="assets/ship.png" width="80">
+                    <p class="select-row-small js-two-cell">2 cell ship</p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="select-x2 select-row">
+                    <p><span class="js-three-cell-count">2</span>&nbsp;&nbsp;&nbsp;<span>-</span>&nbsp;&nbsp;&nbsp;</p>
+                    <img src="assets/ship.png" width="80">
+                    <p class="select-row-small js-three-cell">3 cell ship</p>
+                </div>
+                <div class="select-x1 select-row">
+                    <p><span class="js-four-cell-count">1</span>&nbsp;&nbsp;&nbsp;<span>-</span>&nbsp;&nbsp;&nbsp;</p>
+                    <img src="assets/ship.png" width="80">
+                    <p class="select-row-small js-four-cell">4 cell ship</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="game-field">
+            <div class="game-column a">
+                <div data-x="a" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="2"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="3"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="4"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="5"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="6"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="7"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="8"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="9"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="a" data-y="10"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column b">
+                <div data-x="b" data-y="1"  class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="b" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column c">
+                <div data-x="c" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="c" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column d">
+                <div data-x="d" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="d" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column e">
+                <div data-x="e" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="e" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column f">
+                <div data-x="f" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="f" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column g">
+                <div data-x="g" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="g" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column h">
+                <div data-x="h" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="h" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+
+            </div>
+            <div class="game-column l">
+                <div data-x="l" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="l" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+            <div class="game-column i">
+                <div data-x="i" data-y="1" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="2" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="3" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="4" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="5" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="6" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="7" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="8" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="9" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                <div data-x="i" data-y="10" class="game-cell cell-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game hide">
+        <div class="game-item game-left">
+            <p class="js-player-1"></p>
+            <div class="game-letters">
+                <p>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p><p>l</p><p>i</p>
+            </div>
+            <div class="game-numbers">
+                <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p>
+            </div>
+            <div class="game-field">
+                <div class="game-column a">
+                    <div data-x="a" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="2"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="3"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="4"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="5"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="6"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="7"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="8"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="9"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="10"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column b">
+                    <div data-x="b" data-y="1"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column c">
+                    <div data-x="c" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column d">
+                    <div data-x="d" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column e">
+                    <div data-x="e" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column f">
+                    <div data-x="f" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column g">
+                    <div data-x="g" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column h">
+                    <div data-x="h" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+
+                </div>
+                <div class="game-column l">
+                    <div data-x="l" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column i">
+                    <div data-x="i" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+            </div>
+        </div>
+        <div class="game-item game-right disable">
+            <p class="js-player-2"></p>
+            <div class="game-letters">
+                <p>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p><p>l</p><p>i</p>
+            </div>
+            <div class="game-numbers">
+                <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p>
+            </div>
+            <div class="game-field">
+                <div class="game-column a">
+                    <div data-x="a" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="2"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="3"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="4"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="5"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="6"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="7"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="8"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="9"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="a" data-y="10"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column b">
+                    <div data-x="b" data-y="1"  class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="b" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column c">
+                    <div data-x="c" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="c" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column d">
+                    <div data-x="d" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="d" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column e">
+                    <div data-x="e" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="e" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column f">
+                    <div data-x="f" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="f" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column g">
+                    <div data-x="g" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="g" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column h">
+                    <div data-x="h" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="h" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+
+                </div>
+                <div class="game-column l">
+                    <div data-x="l" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="l" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+                <div class="game-column i">
+                    <div data-x="i" data-y="1" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="2" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="3" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="4" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="5" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="6" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="7" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="8" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="9" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                    <div data-x="i" data-y="10" class="game-cell move-js"><i class="fa fa-bomb hide"></i><img src="assets/damaged.png" class="hide"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="statistic js-statstic-field hide">
+    </div>
+
+
+
+</main>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="js/script.js"></script>
+<script id="__bs_script__">//<![CDATA[
+document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.23.6'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+</body>
+
+</html>

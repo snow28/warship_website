@@ -1,0 +1,48 @@
+.select {
+  padding-top: 40px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .select-info {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 18px; }
+    .select-info span {
+      font-size: 20px;
+      font-weight: 600;
+      color: darkred; }
+  .select-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 250px; }
+    .select-row p {
+      font-size: 18px;
+      font-weight: 500; }
+    .select-row-small {
+      font-size: 12px !important;
+      position: relative;
+      left: 20px; }
+  .select-type {
+    font-size: 22px; }
+    .select-type span {
+      color: red; }
+
+/*# sourceMappingURL=select.css.map */

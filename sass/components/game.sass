@@ -1,0 +1,65 @@
+.game
+  width: 100%
+  padding-top: 70px
+  padding-bottom: 30px
+  display: flex
+  &-item
+    width: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    p
+      margin-bottom: 10px
+      font-size: 22px
+      font-weight: 500
+  &-field
+    width: 420px
+    height: 420px
+    border: 5px solid black
+    display: flex
+    -webkit-box-shadow: 7px 10px 29px -9px rgba(0,0,0,0.68)
+    -moz-box-shadow: 7px 10px 29px -9px rgba(0,0,0,0.68)
+    box-shadow: 7px 10px 29px -9px rgba(0,0,0,0.68)
+  &-column
+    display: flex
+    flex-direction: column
+  &-cell
+    width: 40px
+    height: 40px
+    border: 1px solid black
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    &:hover
+      box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.62)
+    img
+      width: 30px
+      height: 30px
+      position: absolute
+    i
+      font-size: 20px
+  &-letters
+    flex-direction: row
+    display: flex
+    position: relative
+    top: 10px
+    pointer-events: none
+    p
+      text-align: center
+      width: 43px
+  &-numbers
+    pointer-events: none
+    position: absolute
+    padding-right: 460px
+    padding-top: 70px
+    p
+      text-align: center
+      height: 20px
+      right: 200px
+
+
+
+
+
